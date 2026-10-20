@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kontak — Dwi Suryo Nugroho</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --a: #9a7b3f;
+            --on-a: #fff;
+            --card: #ffffff;
+            --bd: rgba(20,20,20,.09);
+            --mut: #6b6b6b;
+            --nav: rgba(250,249,247,.82);
+            --glow: rgba(154,123,63,.08);
+            --shadow: rgba(0,0,0,.08);
+            --ease: cubic-bezier(.16,1,.3,1);
+        }
+
+        [data-bs-theme="light"] {
+            --bs-body-bg: #faf9f7;
+            --bs-body-color: #1c1c1e;
+            --bs-secondary-color: #6b6b6b;
+        }
+
+        [data-bs-theme="dark"] {
+            --a: #cfb184;
+            --on-a: #15130e;
+            --card: rgba(255,255,255,.03);
+            --bd: rgba(255,255,255,.08);
+            --mut: #8b8b92;
+            --nav: rgba(12,12,14,.82);
+            --glow: rgba(207,177,132,.07);
+            --shadow: rgba(0,0,0,.45);
+            --bs-body-bg: #0c0c0e;
+            --bs-body-color: #e8e6e1;
+            --bs-secondary-color: #8b8b92;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            min-height: 100vh;
+            background: radial-gradient(900px 420px at 50% -8%, var(--glow), transparent), var(--bs-body-bg);
+            background-attachment: fixed;
+            overflow-x: hidden;
+            transition: background-color .3s, color .3s, opacity .35s;
+            animation: pagein .6s var(--ease);
+        }
+
+        @keyframes pagein { from { opacity: 0; } }
+        body.leaving { opacity: 0; }
+
+        h1, h2.serif, .serif {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .wrap {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        @media (max-width: 576px) {
+            .wrap { padding: 0 1.1rem; }
+        }
+
+        a:focus, button:focus { outline: none; }
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--a);
+            outline-offset: 3px;
+        }
+
+        /* ===== NAVBAR (dirapikan) ===== */
+        .nav-glass {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(14px);
+            background: var(--nav);
+            border-bottom: 1px solid var(--bd);
+        }
+
+        .nav-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: .75rem;
+            height: 64px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            min-width: 0;
+        }
+
+        .back {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            height: 38px;
+            padding: 0 1rem;
+            flex-shrink: 0;
+            white-space: nowrap;
+            color: var(--bs-body-color);
+            text-decoration: none;
+            font-size: .88rem;
+            font-weight: 500;
+            line-height: 1;
+            border: 1px solid var(--bd);
+            border-radius: .7rem;
+            transition: .3s;
+        }
+
+        .back:hover {
+            color: var(--a);
+            border-color: var(--a);
+            transform: translateX(-3px);
+        }
+
+        .brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: clamp(.95rem, 4.2vw, 1.3rem);
+            line-height: 1;
+            white-space: nowrap;
+            text-decoration: none;
+            color: var(--bs-body-color);
+            letter-spacing: .02em;
+        }
+
+        .brand span { color: var(--a); }
+
+        #themeBtn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border: 1px solid var(--bd);
+            background: transparent;
+            color: var(--bs-body-color);
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            transition: .3s;
+        }
+
+        #themeBtn:hover {
+            color: var(--a);
+            border-color: var(--a);
+        }
+
+        @media (max-width: 400px) {
+            .back { padding: 0 .8rem; font-size: .82rem; }
+            .nav-right { gap: .5rem; }
+            .nav-row { gap: .5rem; }
+        }
+
+        /* ===== KARTU & FORM ===== */
+        .card-m {
+            background: var(--card);
+            border: 1px solid var(--bd);
+            border-radius: 1.1rem;
+            transition: transform .35s, box-shadow .35s, border-color .35s;
+        }
+
+        .lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 36px var(--shadow);
+            border-color: color-mix(in srgb, var(--a) 55%, transparent);
+        }
+
+        .ac { color: var(--a); }
+
+        .btn-a {
+            background: var(--a);
+            color: var(--on-a);
+            border: 1px solid var(--a);
+            border-radius: .8rem;
+            padding: .8rem 1.9rem;
+            font-weight: 600;
+            font-size: .92rem;
+            transition: .3s;
+        }
+
+        .btn-a:hover {
+            color: var(--on-a);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 26px color-mix(in srgb, var(--a) 35%, transparent);
+        }
+
+        .form-floating > .form-control {
+            background: transparent;
+            border: 1px solid var(--bd);
+            border-radius: .8rem;
+            color: var(--bs-body-color);
+            transition: .3s;
+        }
+
+        .form-floating > .form-control:focus {
+            border-color: var(--a);
+            box-shadow: 0 0 0 .2rem color-mix(in srgb, var(--a) 18%, transparent);
+        }
+
+        .form-floating > label { color: var(--mut); }
+        .form-floating > label::after { background: transparent !important; }
+        .form-floating > textarea.form-control { height: 160px; }
+
+        .ico {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--a);
+            border: 1px solid var(--bd);
+            background: color-mix(in srgb, var(--a) 8%, transparent);
+        }
+
+        /* MEDIA SOSIAL */
+        .social-link {
+            width: 48px;
+            height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--bd);
+            border-radius: 14px;
+            color: var(--bs-body-color);
+            background: var(--card);
+            font-size: 1.4rem;
+            text-decoration: none;
+            transition: .3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--a);
+            border-color: var(--a);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+
+        .social-label {
+            font-size: .75rem;
+            color: var(--mut);
+            text-align: center;
+            margin-top: .4rem;
+        }
+
+        .social-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .rv {
+            opacity: 0;
+            transform: translateY(22px);
+            animation: in .7s forwards;
+        }
+
+        .rv:nth-child(2) { animation-delay: .12s; }
+
+        @keyframes in {
+            to { opacity: 1; transform: none; }
+        }
+
+        footer {
+            padding: 2.2rem 0;
+            color: var(--mut);
+            font-size: .82rem;
+            border-top: 1px solid var(--bd);
+            margin-top: 2rem;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+            .rv { opacity: 1; transform: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav-glass">
+        <div class="wrap nav-row">
+            <a href="index.html" class="back" id="backBtn">
+                <i class="bi bi-arrow-left"></i>
+                <span><span class="d-none d-sm-inline">Kembali ke </span>Beranda</span>
+            </a>
+
+            <div class="nav-right">
+                <a href="index.html" class="brand">Dwi Suryo Nugroho<span>.</span></a>
+                <button id="themeBtn" type="button" aria-label="Ganti tema">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="wrap py-5">
+        <div class="text-center mb-5">
+            <h1 class="fw-semibold mb-2" style="font-size:clamp(2.2rem,4.5vw,3.3rem)">
+                Mari <span class="ac">Terhubung</span>
+            </h1>
+            <p class="text-secondary mb-0">
+                Punya pertanyaan, ide, atau tawaran kolaborasi? Tulis pesanmu di bawah ini.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- INFORMASI KONTAK -->
+            <div class="col-lg-5 rv">
+                <div class="card-m lift p-4 p-md-5 h-100">
+
+                    <h2 class="serif h4 fw-semibold mb-4">Informasi</h2>
+
+                    <div class="d-flex gap-3 align-items-center mb-4">
+                        <span class="ico"><i class="bi bi-person"></i></span>
+                        <div>
+                            <div class="small text-secondary">Nama</div>
+                            <div class="fw-semibold">Dwi Suryo Nugroho</div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 align-items-center mb-4">
+                        <span class="ico"><i class="bi bi-mortarboard"></i></span>
+                        <div>
+                            <div class="small text-secondary">Status</div>
+                            <div class="fw-semibold">
+                                Mahasiswa Sistem Informasi, Universitas Budi Luhur
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 align-items-center mb-4">
+                        <span class="ico"><i class="bi bi-geo-alt"></i></span>
+                        <div>
+                            <div class="small text-secondary">Lokasi</div>
+                            <div class="fw-semibold">Jakarta, Indonesia</div>
+                        </div>
+                    </div>
+
+                    <!-- LOGO MEDIA SOSIAL -->
+                    <div class="mt-4 mb-4">
+                        <h3 class="h5 fw-semibold mb-3">Temukan Saya</h3>
+
+                        <div class="d-flex flex-wrap gap-3">
+
+                            <div class="social-item">
+                                <a href="https://www.linkedin.com/in/dwi-suryo-nugroho-2826a53b9?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                                   target="_blank" rel="noopener noreferrer"
+                                   class="social-link" aria-label="LinkedIn">
+                                    <i class="bi bi-linkedin"></i>
+                                </a>
+                                <span class="social-label">LinkedIn</span>
+                            </div>
+
+                            <div class="social-item">
+                                <a href="https://github.com/dwisuryon123-hub"
+                                   target="_blank" rel="noopener noreferrer"
+                                   class="social-link" aria-label="GitHub">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                                <span class="social-label">GitHub</span>
+                            </div>
+
+                            <div class="social-item">
+                                <a href="https://www.instagram.com/dwisuryo12?vrfl=MTZkNmJtNjNuYTZ2dg=="
+                                   target="_blank" rel="noopener noreferrer"
+                                   class="social-link" aria-label="Instagram">
+                                    <i class="bi bi-instagram"></i>
+                                </a>
+                                <span class="social-label">Instagram</span>
+                            </div>
+
+                            <div class="social-item">
+                                <a href="https://www.tiktok.com/@eastraell?_r=1&_t=ZS-9AZtiEOQBE6"
+                                   target="_blank" rel="noopener noreferrer"
+                                   class="social-link" aria-label="TikTok">
+                                    <i class="bi bi-tiktok"></i>
+                                </a>
+                                <span class="social-label">TikTok</span>
+                            </div>
+
+                            <div class="social-item">
+                                <a href="https://t.me/dwisuryo25"
+                                   target="_blank" rel="noopener noreferrer"
+                                   class="social-link" aria-label="Telegram">
+                                    <i class="bi bi-telegram"></i>
+                                </a>
+                                <span class="social-label">Telegram</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="small text-secondary">
+                        <i class="bi bi-clock-history me-1"></i>
+                        Pesan akan dibalas kalau sudah bangun.
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- FORMULIR PESAN -->
+            <div class="col-lg-7 rv">
+                <div class="card-m p-4 p-md-5">
+                    <h2 class="serif h4 fw-semibold mb-4">Kirim Pesan</h2>
+
+                    <form id="kontakForm" novalidate>
+
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="nama"
+                                   placeholder="Nama Lengkap" required>
+                            <label for="nama">Nama Lengkap</label>
+                            <div class="invalid-feedback">Nama lengkap wajib diisi.</div>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="email"
+                                   placeholder="Alamat Email" required>
+                            <label for="email">Alamat Email</label>
+                            <div class="invalid-feedback">Masukkan alamat email yang valid.</div>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="subjek"
+                                   placeholder="Subjek Keperluan" required>
+                            <label for="subjek">Subjek Keperluan</label>
+                            <div class="invalid-feedback">Subjek wajib diisi.</div>
+                        </div>
+
+                        <div class="form-floating mb-1">
+                            <textarea class="form-control" id="pesan"
+                                      placeholder="Pesan" maxlength="500" required></textarea>
+                            <label for="pesan">Pesan</label>
+                            <div class="invalid-feedback">Pesan wajib diisi.</div>
+                        </div>
+
+                        <div class="text-end small text-secondary mb-4">
+                            <span id="cnt">0</span>/500
+                        </div>
+
+                        <button type="submit" class="btn btn-a">
+                            <i class="bi bi-send me-2"></i>Kirim Pesan
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- NOTIFIKASI -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toast" class="toast align-items-center text-bg-success border-0"
+             role="alert" aria-live="assertive">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <i class="bi bi-check-circle-fill me-2"></i>
+                    Terima kasih! Pesanmu berhasil dikirim.
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto"
+                        data-bs-dismiss="toast" aria-label="Tutup"></button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="wrap text-center">
+            &copy; <span id="yr"></span> Dwi Suryo Nugroho · Jakarta, Indonesia
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        (function () {
+            var root = document.documentElement;
+            var btn = document.getElementById('themeBtn');
+            var ic = btn.querySelector('i');
+
+            function setTheme(t) {
+                root.setAttribute('data-bs-theme', t);
+                ic.className = t === 'dark' ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill';
+                try { localStorage.setItem('theme', t); } catch (e) {}
+            }
+
+            var s = null;
+            try { s = localStorage.getItem('theme'); } catch (e) {}
+            setTheme(s || 'dark');
+
+            btn.onclick = function () {
+                setTheme(root.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark');
+            };
+
+            document.getElementById('yr').textContent = new Date().getFullYear();
+
+            /* Halaman memudar dulu saat kembali ke beranda */
+            document.querySelectorAll('a[href="index.html"]').forEach(function (a) {
+                a.addEventListener('click', function (e) {
+                    if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+                    e.preventDefault();
+                    document.body.classList.add('leaving');
+                    setTimeout(function () { location.href = a.getAttribute('href'); }, 350);
+                });
+            });
+            addEventListener('pageshow', function (e) {
+                if (e.persisted) document.body.classList.remove('leaving');
+            });
+
+            var form = document.getElementById('kontakForm');
+            var pesan = document.getElementById('pesan');
+            var cnt = document.getElementById('cnt');
+
+            pesan.addEventListener('input', function () {
+                cnt.textContent = pesan.value.length;
+            });
+
+            // Validasi formulir sisi klien (simulasi).
+            // Belum mengirim email sungguhan.
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                var ok = true;
+
+                form.querySelectorAll('.form-control').forEach(function (f) {
+                    var v = f.value.trim() !== '' && f.checkValidity();
+                    f.classList.toggle('is-invalid', !v);
+                    if (!v) ok = false;
+                });
+
+                if (!ok) return;
+
+                form.reset();
+                cnt.textContent = '0';
+
+                bootstrap.Toast.getOrCreateInstance(
+                    document.getElementById('toast'),
+                    { delay: 4000 }
+                ).show();
+            });
+
+            form.querySelectorAll('.form-control').forEach(function (f) {
+                f.addEventListener('input', function () {
+                    if (
+                        f.classList.contains('is-invalid') &&
+                        f.value.trim() !== '' &&
+                        f.checkValidity()
+                    ) {
+                        f.classList.remove('is-invalid');
+                    }
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>
